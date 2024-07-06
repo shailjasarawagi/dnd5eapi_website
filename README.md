@@ -1,9 +1,9 @@
 D&D Spell Listing App
-Overview
+Overview:
 
 This project is a Dungeons & Dragons (D&D) Spell Listing web application built with React, Redux Toolkit, and React Router. It allows users to view a list of D&D spells, mark their favorite spells, and view detailed information about each spell.
 
-Features
+Features:
 
 1.  Spell List: Displays a list of D&D spells fetched from the D&D 5e API.
 2.  Spell Details: Provides detailed information about each spell, including its level, range, components, duration, and description.
@@ -22,9 +22,10 @@ Technologies Used
 
 To run this project locally, follow these steps:
 
-1. Clone the repository:  
-    git clone <git@github.com:shailjasarawagi/dnd5eapi_website.git>
-   cd dnd-spell-listing-app
+1. Clone the repository:
+
+   - git clone <git@github.com:shailjasarawagi/dnd5eapi_website.git>
+   - cd dnd5eapi_website
 
 2. Install dependencies:
    npm install
