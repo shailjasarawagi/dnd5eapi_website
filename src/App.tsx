@@ -1,26 +1,66 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import { BrowserRouter as Router, Link, Outlet } from "react-router-dom"; // Importing necessary components from React Router
+import styled from "styled-components";
 
-function App() {
+// Styled components for the main layout of the app
+const AppContainer = styled.div`
+  text-align: center;
+  background-color: #f0f0f0;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+`;
+
+const AppHeader = styled.header`
+  background-color: #4a4a4a;
+  padding: 20px;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
+
+const Title = styled.h1`
+  font-size: 2.5rem;
+  margin: 0;
+`;
+
+const Navigation = styled.nav`
+  margin: 20px 0;
+  display: flex;
+  gap: 20px;
+`;
+
+const NavLink = styled(Link)`
+  color: #61dafb;
+  font-size: 1.2rem;
+  text-decoration: none;
+  &:hover {
+    text-decoration: underline;
+  }
+`;
+
+const MainContent = styled.main`
+  flex: 1;
+  padding: 20px;
+`;
+
+// Main App component
+const App: React.FC = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <AppContainer>
+      <AppHeader>
+        <Title>D&D Spell Listing</Title>
+        <Navigation>
+          <NavLink to="/spells">Spells</NavLink>
+          <NavLink to="/favorites">Favorites</NavLink>
+        </Navigation>
+      </AppHeader>
+      <MainContent>
+        <Outlet /> {/* Outlet for rendering nested routes */}
+      </MainContent>
+    </AppContainer>
   );
-}
+};
 
 export default App;
