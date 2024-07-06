@@ -2,7 +2,6 @@ import React, { useCallback, useEffect } from "react";
 import { RootState } from "../../../store/store";
 import { FixedSizeList as List } from "react-window"; // Importing react-window for virtualized list
 import styled from "styled-components";
-import { useSelector, useDispatch } from "react-redux";
 import { addFavorite, fetchSpells, removeFavorite } from "../../../store/spell"; // Importing Redux actions
 import SpellRow from "../../elements/SpellRow"; // Assuming SpellRow component is defined separately
 import { Spell } from "../../../store/spell"; // Importing Spell type
