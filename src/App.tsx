@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter as Router, Link, Outlet } from "react-router-dom"; // Importing necessary components from React Router
+import { Link, Outlet } from "react-router-dom"; // Importing necessary components from React Router
 import styled from "styled-components";
 
 // Styled components for the main layout of the app
