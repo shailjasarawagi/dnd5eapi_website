@@ -26,8 +26,8 @@ const SpellName = styled.span`
   }
 `;
 
-const FavoriteIcon = styled(FaStar)<{ isFavorite: boolean }>`
-  color: ${({ isFavorite }) => (isFavorite ? "#ffc107" : "#ccc")};
+const FavoriteIcon = styled(FaStar)<{ isfavorite: boolean }>`
+  color: ${({ isfavorite }) => (isfavorite ? "#ffc107" : "#ccc")};
   cursor: pointer;
   &:hover {
     color: #ffb000;
@@ -37,14 +37,14 @@ const FavoriteIcon = styled(FaStar)<{ isFavorite: boolean }>`
 // Props interface for the SpellRow component
 interface SpellRowProps {
   spell: Spell; // The spell data
-  isFavorite: boolean; // Indicates if the spell is a favorite
+  isfavorite: boolean; // Indicates if the spell is a favorite
   onFavoriteClick: (spell: Spell) => void; // Function to handle favorite click
   style: React.CSSProperties; // Style object for the row, passed from react-window
 }
 
 // SpellRow component definition, wrapped with React.memo to optimize performance
 const SpellRow: React.FC<SpellRowProps> = React.memo(
-  ({ spell, isFavorite, onFavoriteClick, style }) => {
+  ({ spell, isfavorite, onFavoriteClick, style }) => {
     // Function to handle click on the favorite icon
     const handleFavoriteClick = () => {
       onFavoriteClick(spell);
@@ -59,9 +59,9 @@ const SpellRow: React.FC<SpellRowProps> = React.memo(
         </Link>
         {/* Favorite icon with conditional styling and click handler */}
         <FavoriteIcon
-          isFavorite={isFavorite}
+          isfavorite={isfavorite}
           onClick={handleFavoriteClick}
-          aria-label={isFavorite ? "Remove from favorites" : "Add to favorites"}
+          aria-label={isfavorite ? "Remove from favorites" : "Add to favorites"}
         />
       </SpellRowContainer>
     );

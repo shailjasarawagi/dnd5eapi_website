@@ -51,8 +51,8 @@ const SpellList: React.FC = () => {
   // Callback function to handle adding/removing spells from favorites
   const handleFavoriteClick = useCallback(
     (spell: Spell) => {
-      const isFavorited = favorites.some((fav) => fav.index === spell.index);
-      if (isFavorited) {
+      const isfavorited = favorites.some((fav) => fav.index === spell.index);
+      if (isfavorited) {
         dispatch(removeFavorite(spell)); // Dispatches action to remove spell from favorites
       } else {
         dispatch(addFavorite(spell)); // Dispatches action to add spell to favorites
@@ -88,7 +88,7 @@ const SpellList: React.FC = () => {
           <SpellRow
             key={spells[index].index}
             spell={spells[index]}
-            isFavorite={favorites.some(
+            isfavorite={favorites.some(
               (fav) => fav.index === spells[index].index
             )}
             onFavoriteClick={handleFavoriteClick}

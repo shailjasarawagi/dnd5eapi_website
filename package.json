@@ -5,13 +5,12 @@
   "dependencies": {
     "@reduxjs/toolkit": "^2.2.6",
     "@testing-library/jest-dom": "^5.17.0",
-    "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
-    "@types/jest": "^27.5.2",
     "@types/node": "^16.18.101",
     "@types/react": "^18.3.3",
     "@types/react-dom": "^18.3.0",
     "@types/react-window": "^1.8.8",
+    "@types/redux-mock-store": "^1.0.6",
     "@types/styled-components": "^5.1.34",
     "axios": "^1.7.2",
     "react": "^18.3.1",
@@ -21,6 +20,7 @@
     "react-router-dom": "^6.24.1",
     "react-scripts": "5.0.1",
     "react-window": "^1.8.10",
+    "redux-mock-store": "^1.5.4",
     "styled-components": "^6.1.11",
     "typescript": "^4.9.5",
     "web-vitals": "^2.1.4"
@@ -28,11 +28,16 @@
   "homepage": "http://shailjasarawagi.github.io/dnd5eapi_website",
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d build"
+    "deploy": "gh-pages -d build",
+    "build": "react-scripts build",
+    "test": "jest",
+    "eject": "react-scripts eject"
+  },
+  "jest": {
+    "transform": {
+      "^.+\\.(js|jsx|ts|tsx)$": "babel-jest"
+    }
   },
   "eslintConfig": {
     "extends": [
@@ -53,6 +58,14 @@
     ]
   },
   "devDependencies": {
-    "gh-pages": "^6.1.1"
+    "@babel/core": "^7.24.7",
+    "@babel/preset-env": "^7.24.7",
+    "@babel/preset-typescript": "^7.24.7",
+    "@testing-library/react": "^16.0.0",
+    "@types/jest": "^29.5.12",
+    "babel-jest": "^29.7.0",
+    "gh-pages": "^6.1.1",
+    "jest": "^27.5.1",
+    "ts-jest": "^29.1.5"
   }
 }
