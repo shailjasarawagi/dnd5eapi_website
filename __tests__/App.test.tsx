@@ -1,53 +1,107 @@
-// App.test.tsx
 import React from "react";
-import { render } from "@testing-library/react";
-import { BrowserRouter as Router } from "react-router-dom"; // Use BrowserRouter for testing
-import App from "../src/App";
+import { render, screen } from "@testing-library/react";
+import { MemoryRouter, Route, Routes } from "react-router-dom";
+import App from "../src/App"; // Ensure the path to your App component is correct
+import "@testing-library/jest-dom/extend-expect"; // For better assertions
 
-describe("App component", () => {
-  it("renders title correctly", () => {
-    const { getByText } = render(
-      <Router>
-        <App />
-      </Router>
+// Mock component for the nested routes
+const MockComponent = ({ text }: { text: string }) => <div>{text}</div>;
+
+describe("App Component", () => {
+  test('renders the home page content when the location is "/"', () => {
+    render(
+      <MemoryRouter initialEntries={["/"]}>
+        <Routes>
+          <Route path="/" element={<App />}>
+            <Route
+              path="spells"
+              element={<MockComponent text="Spells Page" />}
+            />
+            <Route
+              path="favorites"
+              element={<MockComponent text="Favorites Page" />}
+            />
+          </Route>
+        </Routes>
+      </MemoryRouter>
     );
-    const titleElement = getByText(/D&D Spell Listing/i); // Case insensitive match for the title
-    expect(titleElement).toBeInTheDocument();
+
+    // Check that the welcome message and description are rendered
+    expect(
+      screen.getByText("Welcome to D&D Spell Listing!")
+    ).toBeInTheDocument();
+    expect(
+      screen.getByText(
+        "Discover a comprehensive list of D&D spells, manage your favorites, and explore detailed spell descriptions. Start by navigating to the Spells page or checking out your favorite spells."
+      )
+    ).toBeInTheDocument();
   });
 
-  it("renders navigation links correctly", () => {
-    const { getByText } = render(
-      <Router>
-        <App />
-      </Router>
+  test("renders the navigation links", () => {
+    render(
+      <MemoryRouter initialEntries={["/"]}>
+        <Routes>
+          <Route path="/" element={<App />}>
+            <Route
+              path="spells"
+              element={<MockComponent text="Spells Page" />}
+            />
+            <Route
+              path="favorites"
+              element={<MockComponent text="Favorites Page" />}
+            />
+          </Route>
+        </Routes>
+      </MemoryRouter>
     );
-    const spellsLink = getByText(/Spells/i); // Case insensitive match for the link text
-    const favoritesLink = getByText(/Favorites/i);
-    expect(spellsLink).toBeInTheDocument();
-    expect(favoritesLink).toBeInTheDocument();
+
+    // Check that navigation links are rendered
+    expect(screen.getByText("Home")).toBeInTheDocument();
+    expect(screen.getByText("Spells")).toBeInTheDocument();
+    expect(screen.getByText("Favorites")).toBeInTheDocument();
   });
 
-  it("navigates to Spells page correctly", () => {
-    // Since NavLink is tested by React Router, we'll just check if it renders correctly
-    const { getByText } = render(
-      <Router>
-        <App />
-      </Router>
+  test("navigates to the Spells page and renders the outlet content", () => {
+    render(
+      <MemoryRouter initialEntries={["/spells"]}>
+        <Routes>
+          <Route path="/" element={<App />}>
+            <Route
+              path="spells"
+              element={<MockComponent text="Spells Page" />}
+            />
+            <Route
+              path="favorites"
+              element={<MockComponent text="Favorites Page" />}
+            />
+          </Route>
+        </Routes>
+      </MemoryRouter>
     );
-    const spellsLink = getByText(/Spells/i);
-    expect(spellsLink.getAttribute("href")).toBe("/spells");
+
+    // Check that the spells page content is rendered
+    expect(screen.getByText("Spells Page")).toBeInTheDocument();
   });
 
-  it("navigates to Favorites page correctly", () => {
-    // Similar to above, ensure Favorites link points correctly
-    const { getByText } = render(
-      <Router>
-        <App />
-      </Router>
+  test("navigates to the Favorites page and renders the outlet content", () => {
+    render(
+      <MemoryRouter initialEntries={["/favorites"]}>
+        <Routes>
+          <Route path="/" element={<App />}>
+            <Route
+              path="spells"
+              element={<MockComponent text="Spells Page" />}
+            />
+            <Route
+              path="favorites"
+              element={<MockComponent text="Favorites Page" />}
+            />
+          </Route>
+        </Routes>
+      </MemoryRouter>
     );
-    const favoritesLink = getByText(/Favorites/i);
-    expect(favoritesLink.getAttribute("href")).toBe("/favorites");
-  });
 
-  // Add more test cases as needed for specific behavior of your application
+    // Check that the favorites page content is rendered
+    expect(screen.getByText("Favorites Page")).toBeInTheDocument();
+  });
 });

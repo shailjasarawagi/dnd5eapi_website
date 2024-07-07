@@ -1,4 +1,3 @@
-// SpellRow.test.tsx
 import React from "react";
 import { render, fireEvent } from "@testing-library/react";
 import { BrowserRouter as Router } from "react-router-dom";
@@ -47,5 +46,18 @@ describe("SpellRow component", () => {
     expect(onFavoriteClickMock).toHaveBeenCalledWith(mockSpell);
   });
 
-  // Add more test cases as needed for specific behavior of your component
+  it("renders favorite icon correctly when spell is a favorite", () => {
+    const { getByLabelText } = render(
+      <Router>
+        <SpellRow
+          spell={mockSpell}
+          isfavorite={true}
+          onFavoriteClick={() => {}}
+          style={{}}
+        />
+      </Router>
+    );
+    const favoriteIcon = getByLabelText(/Remove from favorites/i); // Match aria-label for 'Remove from favorites'
+    expect(favoriteIcon).toBeInTheDocument();
+  });
 });

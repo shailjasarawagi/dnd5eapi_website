@@ -7,7 +7,7 @@ import { Spell } from "../../store/spell"; // Ensure the Spell type is imported
 // Styled components for the spell row
 const SpellRowContainer = styled.div`
   display: grid;
-  grid-template-columns: 1fr auto;
+  grid-template-columns: 2fr 2fr auto;
   gap: 10px;
   padding-right: 50px;
   align-items: center;
@@ -26,7 +26,12 @@ const SpellName = styled.span`
   }
 `;
 
-const FavoriteIcon = styled(FaStar)<{ isfavorite: boolean }>`
+const FavoriteIconContainer = styled.div`
+  display: flex;
+  align-items: center;
+`;
+
+const StyledFaStar = styled(FaStar)<{ isfavorite: boolean }>`
   color: ${({ isfavorite }) => (isfavorite ? "#ffc107" : "#ccc")};
   cursor: pointer;
   &:hover {
@@ -58,11 +63,15 @@ const SpellRow: React.FC<SpellRowProps> = React.memo(
           <SpellName>{spell.name}</SpellName>
         </Link>
         {/* Favorite icon with conditional styling and click handler */}
-        <FavoriteIcon
-          isfavorite={isfavorite}
-          onClick={handleFavoriteClick}
-          aria-label={isfavorite ? "Remove from favorites" : "Add to favorites"}
-        />
+        <FavoriteIconContainer>
+          <StyledFaStar
+            isfavorite={isfavorite ? isfavorite : false}
+            onClick={handleFavoriteClick}
+            aria-label={
+              isfavorite ? "Remove from favorites" : "Add to favorites"
+            }
+          />
+        </FavoriteIconContainer>
       </SpellRowContainer>
     );
   }
