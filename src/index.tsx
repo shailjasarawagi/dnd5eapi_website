@@ -16,11 +16,11 @@ const router = createBrowserRouter([
     element: <App />,
     children: [
       {
-        path: "/spells",
+        path: "spells",
         element: <SpellList />,
       },
-      { path: "/spell/:index/", element: <SpellDetailsPage /> },
-      { path: "/favorites", element: <FavoritesList /> },
+      { path: "spell/:index/", element: <SpellDetailsPage /> },
+      { path: "favorites", element: <FavoritesList /> },
     ],
   },
 ]);
@@ -30,9 +30,11 @@ const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
 );
 root.render(
-  <Provider store={store}>
-    <RouterProvider router={router} />
-  </Provider>
+  <React.StrictMode>
+    <Provider store={store}>
+      <RouterProvider router={router} />
+    </Provider>
+  </React.StrictMode>
 );
 
 reportWebVitals();
