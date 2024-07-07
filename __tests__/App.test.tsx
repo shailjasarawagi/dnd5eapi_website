@@ -1,7 +1,7 @@
 import React from "react";
 import { render, screen } from "@testing-library/react";
 import { MemoryRouter, Route, Routes } from "react-router-dom";
-import App from "../src/App"; // Ensure the path to your App component is correct
+import App from "../src/App";
 import "@testing-library/jest-dom/extend-expect"; // For better assertions
 
 // Mock component for the nested routes

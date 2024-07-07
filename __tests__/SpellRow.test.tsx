@@ -1,7 +1,7 @@
 import React from "react";
 import { render, fireEvent } from "@testing-library/react";
 import { BrowserRouter as Router } from "react-router-dom";
-import { Spell } from "../src/store/spell"; // Ensure this import matches your Spell type
+import { Spell } from "../src/store/spell";
 import SpellRow from "../src/components/elements/SpellRow";
 
 // Mock data for a spell

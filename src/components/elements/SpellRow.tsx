@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { FaStar } from "react-icons/fa";
 import styled from "styled-components";
-import { Spell } from "../../store/spell"; // Ensure the Spell type is imported
+import { Spell } from "../../store/spell";
 
 // Styled components for the spell row
 const SpellRowContainer = styled.div`

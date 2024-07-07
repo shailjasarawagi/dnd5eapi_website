@@ -99,36 +99,36 @@ const SpellDetailsPage: React.FC = () => {
         <Detail label="Range" value={spell.range} />
         <Detail
           label="Components"
-          value={spell.components?.join(", ")}
-          extra={spell.material && `(${spell.material})`}
+          value={spell?.components?.join(", ")}
+          extra={spell?.material && `(${spell?.material})`}
         />
         <Detail
           label="Duration"
-          value={spell.duration}
-          extra={spell.concentration && "(Concentration)"}
+          value={spell?.duration}
+          extra={spell?.concentration && "(Concentration)"}
         />
-        <Detail label="Casting Time" value={spell.casting_time} />
+        <Detail label="Casting Time" value={spell?.casting_time} />
       </Section>
 
       <Section>
         <SectionTitle>Additional Information</SectionTitle>
-        <Detail label="Damage Type" value={spell.damage?.damage_type?.name} />
-        <Detail label="School" value={spell.school?.name} />
+        <Detail label="Damage Type" value={spell?.damage?.damage_type?.name} />
+        <Detail label="School" value={spell?.school?.name} />
         <div>
           <DetailLabel>Classes: </DetailLabel>
-          {spell.classes?.map((cls: any, index: Number) => (
+          {spell?.classes?.map((cls: any, index: Number) => (
             <span key={cls.index}>
               {cls.name}
-              {index !== spell.classes.length - 1 ? ", " : ""}
+              {index !== spell?.classes.length - 1 ? ", " : ""}
             </span>
           ))}
         </div>
         <div>
           <DetailLabel>Subclasses: </DetailLabel>
-          {spell.subclasses?.map((subclass: any, index: Number) => (
+          {spell?.subclasses?.map((subclass: any, index: Number) => (
             <span key={subclass.index}>
               {subclass.name}
-              {index !== spell.subclasses.length - 1 ? ", " : ""}
+              {index !== spell?.subclasses.length - 1 ? ", " : ""}
             </span>
           ))}
         </div>
@@ -136,7 +136,7 @@ const SpellDetailsPage: React.FC = () => {
 
       <Section>
         <SectionTitle>Description</SectionTitle>
-        <SpellDescription>{spell.desc?.join(" ")}</SpellDescription>
+        <SpellDescription>{spell?.desc?.join(" ")}</SpellDescription>
       </Section>
     </DetailContainer>
   );
