@@ -1,7 +1,10 @@
 D&D Spell Listing App
+
+Website url : [http://shailjasarawagi.github.io/dnd5eapi_website](http://shailjasarawagi.github.io/dnd5eapi_website)
+
 Overview:
 
-This project is a Dungeons & Dragons (D&D) Spell Listing web application built with React, Redux Toolkit, and React Router. It allows users to view a list of D&D spells, mark their favorite spells, and view detailed information about each spell.
+This project is a Dungeons & Dragons (D&D) Spell Listing web application built with React,Typescript, Redux Toolkit, and React Router. It allows users to view a list of D&D spells, mark their favorite spells, and view detailed information about each spell.
 
 Features:
 
@@ -11,34 +14,50 @@ Features:
 
 Technologies Used
 
-    Frontend:
-        React
-        Redux Toolkit for state management
-        React Router for routing
-        Styled-components for styling
+1. Frontend:
 
-    Backend/APIs:
-        Uses the D&D 5e API (https://www.dnd5eapi.co/) for spell data
+   - React
+   - Redux Toolkit for state management
+   - React Router for routing
+   - Styled-components for styling
+
+2. Backend/APIs:
+   - Uses the D&D 5e API (https://www.dnd5eapi.co/) for spell data
 
 To run this project locally, follow these steps:
 
 1. Clone the repository:
 
-   - git clone <git@github.com:shailjasarawagi/dnd5eapi_website.git>
-   - cd dnd5eapi_website
+```
+   $ git clone  git@github.com:shailjasarawagi/dnd5eapi_website.git
+
+   $ cd dnd5eapi_website
+```
 
 2. Install dependencies:
-   npm install
+
+```
+   $ npm install
+```
 
 3. Start the development server:
-   npm start
+
+```
+   $ npm start
+```
+
 4. Open the application:
+
    Open http://localhost:3000 to view it in the browser.
 
 Folder Structure
 
 The project structure follows a modular approach:
 
-    src/components/elements/: Contains reusable UI components.
-    src/component/templates: Contains template components for structured layout.
-    src/component/modules: Contains feature-specific modules like SpellDetail and SpellFavoriteList.
+- src/components/elements/: Contains reusable UI components.
+- src/component/templates: Contains template components for structured layout.
+- src/component/modules: Contains feature-specific modules like SpellDetail and SpellFavoriteList.
+
+Test Cases
+
+- Test cases have been added to ensure the functionality and reliability of the application for SpellFavoriteList ,SpellRow and main page.
